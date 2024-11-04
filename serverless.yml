@@ -1,0 +1,20 @@
+service: terraform-microsoft-webhook
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  app:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: get
+      - http:
+          path: terraform-approval
+          method: post
+      - http:
+          path: microsoft-response
+          method: post
